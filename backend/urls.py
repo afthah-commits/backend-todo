@@ -2,15 +2,12 @@ from django.contrib import admin
 from django.urls import path, include
 from django.http import JsonResponse
 
-
-# Optional root route response
+# Root URL response
 def home(request):
     return JsonResponse({"message": "Backend running successfully"})
 
-
 urlpatterns = [
-    path('', home),                   # optional root path
-    path('admin/', admin.site.urls),  # admin panel
-    path('api/', include('api.urls')),  # include API app routes
-
+    path('', home, name='home'),              # Root URL
+    path('admin/', admin.site.urls),          # Admin panel
+    path('api/', include('api.urls')),        # API routes (very important)
 ]
